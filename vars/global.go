@@ -6,5 +6,5 @@ const (
 	Version     string = "v1.0.0"
 
 	// Config Language
-	FileExtension string = "qdb"
+	FileExtension string = ".qdb"
 )

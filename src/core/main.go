@@ -1,16 +1,22 @@
 package core
 
 import (
-	"QuikDB/lib/files"
 	"QuikDB/src/core/models"
 )
 
 var (
 	Tables     []models.Table
 	References []models.Reference
+	Modules    []string
 )
 
 func Run() {
-	read, _ := files.Read("E:\\Proyectos\\github.com\\Quikcode\\Quikdb\\test\\test_table.qdb")
+	// Get all files of the route
+	Modules = getModules("E:\\Proyectos\\github.com\\Quikcode\\Quikdb\\test\\database")
+
+	// Analyze modules to find Tables and References
+	for _, path := range Modules {
+		analyzeModule(path)
+	}
 
 }

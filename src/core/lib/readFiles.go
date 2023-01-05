@@ -1,21 +1,21 @@
-package files
+package lib
 
 import (
 	"io"
 	"os"
 )
 
-func Read(path string) ([]byte, error) {
+func ReadFile(path string) (string, error) {
 	file, err := os.Open(path)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	defer file.Close()
 
 	data, err := io.ReadAll(file)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	return data, nil
+	return string(data), nil
 }
